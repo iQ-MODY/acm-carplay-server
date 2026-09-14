@@ -98,7 +98,7 @@ def get_or_create_key_and_cert():
     return private_key, cert_der
 
 MFI_PRIVATE_KEY, MFI_CERT_DER = get_or_create_key_and_cert()
-MFI_CERT_BASE64 = base64.b64encode(MFI_CERT_DER).decode("utf-8")
+MFI_CERT_BASE64 = base64.urlsafe_b64encode(MFI_CERT_DER).decode("utf-8").rstrip("=")
 
 # In-memory storage for active challenges and registered devices
 active_challenges = {}
